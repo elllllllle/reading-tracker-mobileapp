@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { getToken, removeToken } from '../services/api';
 import * as SecureStore from 'expo-secure-store';
+import * as SplashScreen from 'expo-splash-screen';
 
 const AuthContext = createContext(null);
 
@@ -17,6 +18,8 @@ export function AuthProvider({ children }) {
       setTokenState(t);
       setUsername(u);
       setLoading(false);
+      // Hide splash screen once auth state is loaded
+      SplashScreen.hideAsync();
     });
   }, []);
 

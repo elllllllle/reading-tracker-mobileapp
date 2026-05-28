@@ -16,6 +16,12 @@ import BookDetailScreen from './screens/BookDetailScreen';
 import MyBooksScreen from './screens/MyBooksScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
+// Splash screen set up
+import * as SplashScreen from 'expo-splash-screen';
+
+// Keep splash visible until app is ready
+SplashScreen.preventAutoHideAsync();
+
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
 const MyBooksStack = createStackNavigator();
