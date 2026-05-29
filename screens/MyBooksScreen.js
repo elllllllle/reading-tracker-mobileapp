@@ -139,7 +139,12 @@ export default function MyBooksScreen({ navigation }) {
   const fetchShelves = useCallback(async () => {
     try {
       const data = await getShelves();
-      setShelves(Array.isArray(data) ? data : (data.docs || []));
+      const updated = Array.isArray(data) ? data : (data.docs || []);
+      setShelves(updated);
+      // Keep selectedShelf in sync
+      setSelectedShelf(prev => 
+        prev ? updated.find(s => s._id === prev._id) || prev : null
+      );
     } catch (err) { setShelves([]); }
   }, []);
 
@@ -254,8 +259,16 @@ export default function MyBooksScreen({ navigation }) {
     ]);
   };
 
-  const handleShelfPress = (shelf) => {
+  const handleShelfPress = async (shelf) => {
     setSelectedShelf(shelf);
+    // Refetch to get latest books
+    try {
+      const data = await getShelves();
+      const updated = Array.isArray(data) ? data : (data.docs || []);
+      setShelves(updated);
+      const fresh = updated.find(s => s._id === shelf._id);
+      if (fresh) setSelectedShelf(fresh);
+    } catch {}
   };
 
   if (loading) return <View style={styles.centered}><ActivityIndicator size="large" color="#454545" /></View>;

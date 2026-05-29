@@ -378,7 +378,7 @@ export default function BookDetailScreen({ route, navigation }) {
           ) : (
             <View style={{ flex: 1 }}>
               <Text style={[styles.label, { paddingHorizontal: 24, marginBottom: 12 }]}>Select a shelf</Text>
-              <ScrollView style={{ flex: 1 }}>
+              <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 {shelves.map(shelf => (
                   <TouchableOpacity
                     key={shelf._id}
@@ -393,7 +393,7 @@ export default function BookDetailScreen({ route, navigation }) {
                 ))}
               </ScrollView>
               <View style={styles.shelfModalActions}>
-                <TouchableOpacity style={[styles.primaryButton, { flex: 1 }]} onPress={handleAddToShelf}>
+                <TouchableOpacity style={styles.primaryButton} onPress={handleAddToShelf}>
                   <Text style={styles.primaryButtonText}>Add to Shelf</Text>
                 </TouchableOpacity>
               </View>
@@ -458,7 +458,7 @@ const styles = StyleSheet.create({
   shelfItemText: { fontSize: 15, color: '#454545' },
   emptyShelf: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 40, gap: 16 },
   emptyShelfText: { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22 },
-  shelfModalActions: { padding: 24, paddingBottom: 40 },
+  shelfModalActions: { padding: 24, paddingBottom: 48, backgroundColor: '#FFFDF5' },
   errorText: { color: '#c0392b', marginBottom: 12 },
   retryButton: { backgroundColor: '#454545', borderRadius: 8, paddingHorizontal: 20, paddingVertical: 10 },
   retryText: { color: '#fff', fontWeight: 'bold' },
