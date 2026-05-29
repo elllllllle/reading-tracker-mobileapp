@@ -1,6 +1,6 @@
 # Reading Tracker Mobile App
 
-Written by Elle for Queensland University of Technology, IFN666 Web and Mobile Application Development.
+Written by Elle Koedduang for Queensland University of Technology, IFN666 Web and Mobile Application Development.
 
 ## Purpose
 
